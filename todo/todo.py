@@ -1,4 +1,4 @@
-'''from flask import Blueprint, Flask, render_template, request, url_for, redirect, session
+from flask import Blueprint, Flask, render_template, request, url_for, redirect, session
 import pymongo
 from bson import ObjectId
 
@@ -34,5 +34,4 @@ def todolist():
 def delete(id):
     todos.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
-    '''
 
