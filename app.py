@@ -19,7 +19,7 @@ records = db.register
 
 
 @app.route("/", methods=['post', 'get'])
-def index():
+def index(): #this will be executed first to redirect the user on the login page
     message = ''
     if "email" not in session:
         return redirect(url_for("login"))
@@ -27,7 +27,7 @@ def index():
 
 
 @app.route("/register/", methods=['post', 'get'])
-def register():
+def register(): # a function used to create a registration system
     message = ''
     if "email" in session:
         return redirect(url_for("logged_in"))
@@ -71,7 +71,7 @@ def about():
 
 
 @app.route("/login/", methods=["POST", "GET"])
-def login():
+def login(): # a function used to manage the login system
     message = 'Please login to your account'
     if "email" in session:
         return redirect(url_for("logged_in"))
@@ -118,7 +118,7 @@ def logout():
 
 
 @app.route('/todolist/', methods=('GET', 'POST'))
-def todolist():
+def todolist(): #the function that will manage the todo_app
     message = ''
     if "email" not in session:
         return redirect(url_for("login"))
@@ -134,7 +134,7 @@ def todolist():
 
 
 @app.post('/<id>/delete')
-def delete(id):
+def delete(id): # a simple delete function
     todos.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
 
